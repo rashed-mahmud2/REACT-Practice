@@ -5,37 +5,80 @@ import "./App.css";
 
 // re-rendering of react;
 function App() {
-  console.log("i am called");
-  const [dynamicCounter, setDynamicCounter] = useState(20);
-  const [dynamicCounter2, setDynamicCounter2] = useState(30);
+  // re-render
+  const [noteTitle, setNoteTitle] = useState("");
+  const [notes, setNotes] = useState([]);
+  const [editMode, setEditMode] = useState(false);
+  const [editableNote, setEditableNote] = useState(null);
 
-  const increaseHandler = () => {
-    setDynamicCounter(dynamicCounter + 1);
+  const changeTitleHandler = (e) => {
+    setNoteTitle(e.target.value);
   };
 
-  const decreaseHandler = () => {
-    setDynamicCounter(dynamicCounter - 1);
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if (noteTitle === "") {
+      return alert("please provide a valid title");
+    }
+
+    editMode ? updateHandler() : createHandler();
   };
 
-  const increaseHandler2 = () => {
-    setDynamicCounter2(dynamicCounter2 + 1);
+  const createHandler = () => {
+    const newNotes = {
+      id: Date.now() + "",
+      title: noteTitle,
+    };
+
+    setNotes([...notes, newNotes]);
+    setNoteTitle("");
   };
 
-  const decreaseHandler2 = () => {
-    setDynamicCounter2(dynamicCounter2 - 1);
+  const removeHandler = (noteId) => {
+    const updatedNotes = notes.filter((item) => item.id !== noteId);
+    setNotes(updatedNotes);
+  };
+
+  const editHandler = (note) => {
+    setEditMode(true);
+    setEditableNote(note);
+    setNoteTitle(note.title);
+  };
+
+  const updateHandler = () => {
+    const updatedNotes = notes.map((item) => {
+      if (item.id === editableNote.id) {
+        return { ...item, title: noteTitle };
+      }
+
+      return item;
+    });
+
+    setNotes(updatedNotes);
+    setEditMode(false);
+    setNoteTitle("");
   };
 
   return (
     <div className="App">
-      <div className="counter-app">
-        <p>The value of the counter is {dynamicCounter}</p>
-        <button onClick={increaseHandler}>Increase By 1</button>
-        <button onClick={decreaseHandler}>Decrease By 1</button>
-      </div>
-      <div className="counter-app2">
-        <p>The value of the counter is {dynamicCounter2}</p>
-        <button onClick={increaseHandler2}>Increase By 1</button>
-        <button onClick={decreaseHandler2}>Decrease By 1</button>
+      <form onSubmit={submitHandler}>
+        <input type="text" value={noteTitle} onChange={changeTitleHandler} />
+        <button type="submit">{editMode ? "Update Note" : "Add Note"}</button>
+      </form>
+      <div className="note-list">
+        <h2>All Lists</h2>
+        <ul>
+          {notes.map((note) => (
+            <>
+              <li key={note.id}>
+                <span>{note.title}</span>
+                <button onClick={() => editHandler(note)}>Edit</button>
+                <button onClick={() => removeHandler(note.id)}>Delete</button>
+              </li>
+              <br />
+            </>
+          ))}
+        </ul>
       </div>
     </div>
   );
