@@ -5,6 +5,9 @@ import Card1 from './components/Card1.jsx'
 import Card2 from './components/Card2.jsx'
 import Card3 from './components/Card3.jsx'
 import Card5 from './components/Card5.jsx'
+import ReactBootstrap from './components/ReactBootstrap.jsx'
+import BasicExample from './components/BasicExample.jsx'
+import Data from './data.json'
 
 
 // how react works under the hood.
@@ -44,12 +47,16 @@ function App() {
  
   return (
     <>
-     <Welcome />
+     {/* <Welcome />
      <Welcome2 />
      <ShowInfo />
      <ShowInfo2 />
      <Card3 />
-     <Card5 />
+     <Card5 /> */}
+     <ReactBootstrap />
+     {Data.map((cardItem) => (
+      <BasicExample key={cardItem.id} cardTitle={cardItem.title} cardBody={cardItem.desc}/>
+     ))}
     </>
   )
 }
