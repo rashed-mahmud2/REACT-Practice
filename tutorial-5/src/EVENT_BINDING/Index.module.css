@@ -1,0 +1,22 @@
+.heading {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn {
+  border: none;
+  background-color: rgba(5, 5, 235, 0.762);
+  color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
