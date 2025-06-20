@@ -1,0 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Hand:wght@400..700&family=Poppins:wght@300;400;500;600;700&display=swap");
+
+body {
+  background-color: rgba(0, 0, 0, 0.879);
+  color: whitesmoke;
+  font-family: "Poppins", sans-serif;
+}
+
+li {
+  list-style: none;
+}
