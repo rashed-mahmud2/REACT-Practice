@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
-import FetchData from "./components/FetchData"
+import FetchData from "../components/FetchData"
+import Nav from "../components/Nav";
 
 function App() {
 const [todos, setTodos] = useState([]);
@@ -59,7 +60,7 @@ const deleteHandler =(todoId) => {
         <button type="submit">Submit</button>
         </form>
         <h2>All Todo</h2>
-        <ul>
+        <ul className="todoLists">
           {todos?.map((todo) => (
             <li key={todo.id}>
               <span><input type="checkbox" /></span>

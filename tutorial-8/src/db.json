@@ -6,11 +6,6 @@
       "id": 1
     },
     {
-      "title": "CSS",
-      "isComplete": false,
-      "id": 2
-    },
-    {
       "title": "JavaScript",
       "isComplete": false,
       "id": 3
@@ -74,6 +69,26 @@
       "title": "Astro",
       "isComplete": false,
       "id": 15
+    },
+    {
+      "title": "React Router ",
+      "isComplete": false,
+      "id": 16
+    },
+    {
+      "title": "Redux toolkit",
+      "isComplete": false,
+      "id": 17
+    },
+    {
+      "title": "TypeScript",
+      "isComplete": false,
+      "id": 18
+    },
+    {
+      "title": "Python",
+      "isComplete": false,
+      "id": 19
     }
   ]
 }
